@@ -1,0 +1,54 @@
+public class Box {
+     double length;
+        double width;
+        double height;
+
+        public   Box (double length,double width,double height ) throws Exception{
+        this.length =length ;
+        this.width = width;
+        this.height = height;
+
+           setLength(length);
+            setWidth(width);
+            setHeight(height);
+
+
+        }
+        public double   calculateSurfaceArea (){
+            return 2*length* width + 2*length* height + 2*width* height;
+        }
+        public double   calculateLateralSurfaceArea (){
+            return 2*length* height + 2*width* height;
+        }
+        public double   calculateVolume  (){
+            return  length* height  *width ;
+        }
+
+        public double getLength() {
+            return length;
+        }
+
+        public void setLength(double length) throws Exception {
+            if (length<=0) throw new Exception("Length cannot be zero or negative.");
+            this.length = length;
+        }
+
+        public double getWidth() {
+            return width;
+        }
+
+
+        public void setWidth(double width) throws Exception{
+            if (width<=0) throw new Exception("Width cannot be zero or negative.");
+            this.width = width;
+        }
+
+        public double getHeight() {
+            return height;
+        }
+
+        public void setHeight(double height) throws Exception{
+            if (height<=0) throw new Exception("Height cannot be zero or negative.");
+            this.height = height;
+        }
+    }

@@ -1,0 +1,26 @@
+public class BankAccount {
+    private int id;
+    private static int bankAccount=1;
+    private double Balance;
+    private static  final double DEFAULT_INTEREST_RATE=0.02;
+    private static double InterestRate = DEFAULT_INTEREST_RATE;
+    public BankAccount(){
+        this.id = bankAccount++;
+    }
+
+    public static void setInterestRate(double interest) {
+        BankAccount.InterestRate = interest;
+    }
+
+    public double getInterest(int Years) {
+        return InterestRate*Years*this.Balance;
+    }
+
+    public void deposit(double amount) {
+        this.Balance=this.Balance+amount;
+    }
+
+    public int getId() {
+        return id;
+    }
+}

@@ -1,0 +1,45 @@
+public class Chicken {
+    private  String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) throws Exception {
+        if (name==null) throw new Exception("«Name  cannot be empty");
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) throws Exception{
+        if (age>10 || age<0 ) throw new Exception("Age should be between 0 and 15.");
+        this.age = age;
+    }
+
+    public Chicken (String name, int age)  throws Exception {
+        setAge(age);
+        setName(name);
+    }
+
+    public double productPerDay (){
+        return calculateProductPerDay();
+    }
+
+    /**
+     * • Первые 6 лет она откладывает по 2 яйца в день
+     * • Следующие 6 лет она откладывает 1 яйцо в день
+     * • И после этого она откладывает 0,75 яйца в день
+     * @return
+     */
+    double calculateProductPerDay() {
+        double aggsPerDay=0;
+        if (getAge()>12) aggsPerDay= 0.75;
+        if (getAge()>6&&getAge()<=12) aggsPerDay= 1;
+        if (getAge()<6 ) aggsPerDay= 2;
+        return aggsPerDay;
+    }
+}

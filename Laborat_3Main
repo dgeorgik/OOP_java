@@ -1,0 +1,32 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Lab3 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        int count = Integer.parseInt(s);
+        ArrayList<Person> personArray= new  ArrayList <Person>();
+        for (int i = 0; i < count; i++) {
+            String klava_line = reader.readLine();
+            String [] klava_array= klava_line.split(" ");
+            int age = Integer.parseInt(klava_array[1]);
+            Person p=new Person();
+            p.setName(klava_array[0]);
+            p.setAge(age);
+            personArray.add(p);
+        }
+        personArray.sort(Lab3::compareNames);
+        for (int i = 0; i < personArray.size(); i++) {
+            Person p=personArray.get(i);
+            if (p.getAge()<30) continue;
+            else System.out.println(p.getName()+" - "+p.getAge());
+        }
+    }
+
+    public static int compareNames(Person first, Person second){
+        return - first.getName().compareTo(second.getName());
+    }
+}

@@ -1,0 +1,63 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Lab2 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<BankAccount> accoutArray = new ArrayList<BankAccount>();
+
+        while (true) {
+            String klava_line = reader.readLine();
+            String[] klava_array = klava_line.split(" ");
+            switch (klava_array[0]) {
+                case "Create":
+                    BankAccount b = new BankAccount();
+                    System.out.println("Account ID" + b.getId() + " created");
+                    accoutArray.add(b);
+                    break;
+                case "Deposit":
+                    int accountId = Integer.parseInt(klava_array[1]);
+                    BankAccount bankAccount = null;
+                    for (int i = 0; i < accoutArray.size(); i++) {
+                        if (accoutArray.get(i).getId() == accountId) {
+                            bankAccount = accoutArray.get(i);
+                            break;
+                        }
+                    }
+                    if (bankAccount == null) {
+                        System.out.println("Account does not exist");
+                    } else {
+                        double deposit = Double.parseDouble(klava_array[2]);
+                        bankAccount.deposit(deposit);
+                        System.out.println("Deposited " + klava_array[2] + " ID" + bankAccount.getId());
+                    }
+                    break;
+                case "GetInterest":
+                    int accountIdS = Integer.parseInt(klava_array[1]);
+                    BankAccount bankAccountS = null;
+                    for (int i = 0; i < accoutArray.size(); i++) {
+                        if (accoutArray.get(i).getId() == accountIdS) {
+                            bankAccountS = accoutArray.get(i);
+                            break;
+                        }
+                    }
+                    if (bankAccountS == null) {
+                        System.out.println("Account does not exist");
+                    } else {
+                        int interes = Integer.parseInt(klava_array[2]);
+                        System.out.println(bankAccountS.getInterest(interes));
+                    }
+                    break;
+                case "SetInterest":
+                    double deposit = Double.parseDouble(klava_array[1]);
+                    BankAccount.setInterestRate(deposit);
+                    break;
+                case "End":
+                    System.exit(0);
+                    break;
+            }
+        }
+    }
+}

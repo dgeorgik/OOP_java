@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Lab4 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        double length = Double.parseDouble(s);
+        s = reader.readLine();
+        double width = Double.parseDouble(s);
+        s = reader.readLine();
+        double height =  Double.parseDouble(s);
+try{
+    Box b = new Box(length,width,height);
+    System.out.println("Surface Area - "+b.calculateSurfaceArea());
+    System.out.println("Lateral Surface Area - "+b.calculateLateralSurfaceArea() );
+    System.out.println("Volumea - "+b.calculateVolume());
+
+}catch (Exception e){
+    System.out.println(e.getMessage());
+}
+    }
+}
